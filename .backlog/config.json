@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1.0,
+  "projectKey": "AIA",
+  "projectName": "Planning Poker",
+  "provider": {
+    "type": "jira-cloud",
+    "baseUrl": "https://kainossoftware-sandbox.atlassian.net",
+    "fields": { "sprint": "customfield_10020" },
+    "draftLabel": "draft",
+    "buckets": [
+      { "id": "3851", "name": "Sprint 1", "allowDrafts": false },
+      { "id": "3925", "name": "Ready for Refinement", "allowDrafts": false },
+      { "id": "3924", "name": "Draft", "allowDrafts": true }
+    ]
+  },
+  "components": []
+}

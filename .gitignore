@@ -1,0 +1,7 @@
+.DS_Store
+
+.backlog/breakdowns/*
+!.backlog/breakdowns/.gitkeep
+.backlog/local/*
+!.backlog/local/.gitkeep
+.backlog/_templates/.DS_Store
