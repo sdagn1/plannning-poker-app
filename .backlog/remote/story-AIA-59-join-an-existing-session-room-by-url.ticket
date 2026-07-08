@@ -10,14 +10,33 @@ component:
 labels: []
 bucket: 
 epicKey: AIA-55
+lastSynced: 2026-07-08T12:32:45.780Z
 ---
 *As the* Planning Poker Developer/Engineer
 *I want* to join an existing session room by visiting its URL and entering a display name
 *So that* I can participate in the estimation session alongside my teammates
+
 *Acceptance Criteria*
+- AC01: Opening a shared room link pre-populates the room identifier on the landing screen and prompts for a callsign before joining
+- AC02: When the callsign field is left empty a random Star Wars themed name is assigned to the joiner
+- AC03: A callsign longer than the allowed length is rejected with an inline error and the join does not proceed
+- AC04: An invalid or unknown room link shows a clear themed error and the joiner remains on the landing screen to retry
+- AC05: A room that is already at capacity shows a distinct themed "room full" error and the joiner remains on the landing screen
+- AC06: On joining the participant appears as a regular non-host participant and sees the full roster of everyone already present
+- AC07: The participant list updates in real time as other people join or leave the room
 
 *Out of Scope*
+- Host reassignment when the host disconnects, which is covered by a separate story
+- Voting, revealing, and resetting behaviour, which are covered by separate stories
 
 *Technical Notes*
+- Read the room identifier from the URL and open the WebSocket connection to {code}wss://<host>/ws?room=<roomId>&name=<displayName>{code}
+- Render the roster from the {code}state{code} broadcasts, replacing the full snapshot on each update rather than merging
+- Map the backend upgrade rejections to specific messages: {code}400{code} for an invalid room or name, {code}403{code} for a room at capacity
+- Reuse the shared Star Wars themed callsign fallback and length validation from the create-room flow
+- Apply the Death Star theme to the join screen and error messaging per the UI design document
 
 *Testing Notes*
+- Add unit tests for extracting the room identifier from the URL and for callsign fallback and validation
+- Add an integration test for the join-and-see-roster flow with live roster updates
+- Manually verify the invalid-link and room-full error states and real-time roster changes as users join and leave

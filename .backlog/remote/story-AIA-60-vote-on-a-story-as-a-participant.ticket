@@ -10,14 +10,32 @@ component:
 labels: []
 bucket: 
 epicKey: AIA-55
+lastSynced: 2026-07-08T12:32:49.661Z
 ---
 *As the* Planning Poker Developer/Engineer
 *I want* to cast a point estimate vote during an active session and see which participants have voted
 *So that* the team can track readiness before votes are revealed
+
 *Acceptance Criteria*
+- AC01: The voting deck presents the full themed card set of 0, 1, 2, 3, 5, 8 and 13 plus the "Bad Feeling", "Jawa Juice" and Death Star cards
+- AC02: A participant casts a vote by selecting a card from the deck
+- AC03: The selected card is highlighted with a red border and glow
+- AC04: Selecting a different card before votes are revealed silently replaces the previous vote
+- AC05: Each participant in the roster shows a live voted or not-voted indicator without exposing any vote value before reveal
+- AC06: Once votes are revealed the deck is disabled and no further votes can be cast until the round is reset
+- AC07: An attempt to vote while voting is locked shows a clear themed error message
 
 *Out of Scope*
+- Revealing and resetting votes, which are covered by separate stories
 
 *Technical Notes*
+- Send a {code}vote{code} message with the card's server value as a string, e.g. {code}{ "type": "vote", "value": "5" }{code}
+- Map each themed card face to its server value per the UI design deck table
+- Drive the selected, voted and disabled card states and the roster voted indicators from the {code}state{code} broadcasts, using {code}hasVoted{code} for indicators before reveal
+- Disable the deck while {code}revealed{code} is true and surface the backend "Voting is locked until reset" error if a vote is attempted
+- Apply the Death Star theme to the deck and card states, using a red border and glow for the selected card
 
 *Testing Notes*
+- Add unit tests for card face to server value mapping and for the selected, changed and locked vote states
+- Add an integration test for casting a vote and seeing the roster indicator update
+- Manually verify re-voting before reveal, the special cards, and the disabled deck and locked error after reveal

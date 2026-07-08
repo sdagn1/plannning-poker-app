@@ -10,14 +10,34 @@ component:
 labels: []
 bucket: 
 epicKey: AIA-55
+lastSynced: 2026-07-08T12:32:52.925Z
 ---
 *As the* Planning Poker Developer/Engineer
 *I want* to reveal all votes simultaneously so every participant sees the results at the same time
 *So that* the team can discuss estimates and reach a consensus
+
 *Acceptance Criteria*
+- AC01: Only the host sees the reveal and reset controls and non-host participants never see them
+- AC02: When the host reveals, every participant's card flips face-up at the same time for all participants
+- AC03: Each revealed vote is shown alongside the name of the participant who cast it
+- AC04: When every participant has voted and all votes are identical a dismissible unanimous celebration overlay is shown without changing the round state
+- AC05: Revealing when no votes have been cast is allowed and shows an empty result
+- AC06: The host can reset the round, which clears all votes and returns every participant to the voting state
+- AC07: An invalid reveal or reset action rejected by the backend surfaces a clear themed inline error and does not change the displayed state
 
 *Out of Scope*
+- Casting votes, which is covered by a separate story
+- Host reassignment when the host disconnects, which is covered by a separate story
+- A summary statistics bar for the revealed results
 
 *Technical Notes*
+- Send the host-only {code}reveal{code} and {code}reset{code} messages and render the revealed values and voter names from the {code}state{code} broadcast
+- Gate the reveal and reset controls on whether the local user is the current host by comparing the stored own id against {code}hostId{code}
+- Detect the unanimous condition client-side when {code}revealed{code} is true, every participant has voted, and all vote values are identical
+- Surface the backend error messages for non-host actions and for revealing or resetting in an invalid state
+- Apply the Death Star theme to the revealed state, host controls, and the unanimous celebration overlay per the UI design document
 
 *Testing Notes*
+- Add unit tests for host control gating, the unanimous detection logic, and reset clearing the votes
+- Add an integration test for revealing votes and seeing the values and voter names
+- Manually verify revealing with no votes, the unanimous celebration overlay, reset returning to voting, and themed error surfacing for invalid actions

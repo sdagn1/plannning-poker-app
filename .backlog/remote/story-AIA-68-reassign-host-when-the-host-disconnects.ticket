@@ -1,0 +1,40 @@
+---
+schemaVersion: 1.0
+issueType: Story
+templateName: story
+title: Reassign host when the host disconnects
+draft: true
+lifecycleState: remote
+ticketKey: AIA-68
+component: 
+labels: []
+bucket: 
+epicKey: AIA-55
+lastSynced: 2026-07-08T12:32:56.735Z
+---
+*As the* Planning Poker Developer/Engineer
+*I want* the participant list to reflect a newly promoted host when the current host disconnects
+*So that* the session can continue with reveal and reset controls available
+
+*Acceptance Criteria*
+- AC01: The host badge always reflects the current host and moves to the newly promoted host when the previous host disconnects
+- AC02: The newly promoted host immediately gains working reveal and reset controls appropriate to the current round state
+- AC03: The round continues in its current state when the host changes, with no forced reset or automatic reveal
+- AC04: All participants see a notification naming the newly promoted host
+- AC05: The newly promoted host sees a distinct notification informing them that they are now the host
+- AC06: A former host who reconnects joins as a regular participant and does not regain host status
+
+*Out of Scope*
+- The initial host designation when a room is created, which is covered by a separate story
+- Voting and reveal mechanics, which are covered by separate stories
+
+*Technical Notes*
+- Derive the current host from {code}hostId{code} in each {code}state{code} broadcast and compare successive states to detect a host change
+- Trigger the host-change notification when the {code}hostId{code} differs from the previous state, tailoring the message when the local user's own id becomes the new host
+- Gate the reveal and reset controls on whether the local user's own id matches the current {code}hostId{code}
+- Apply the Death Star theme to the host-change notification per the UI design document
+
+*Testing Notes*
+- Add unit tests for host-change detection between states and for control gating on the current host
+- Add an integration test simulating a host disconnect and the promotion of a new host mid-round
+- Manually verify the notification variants for the promoted host and other participants, and that a reconnecting former host remains a regular participant

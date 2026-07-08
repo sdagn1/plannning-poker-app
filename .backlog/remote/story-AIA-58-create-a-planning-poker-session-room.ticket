@@ -10,14 +10,33 @@ component:
 labels: []
 bucket: 
 epicKey: AIA-55
+lastSynced: 2026-07-08T12:32:42.407Z
 ---
 *As the* Planning Poker Developer/Engineer
 *I want* to create a new planning poker session room that generates a unique shareable URL
 *So that* I can invite my team to join and start estimating together
+
 *Acceptance Criteria*
+- AC01: Landing screen offers an option to initiate a new session that generates a unique room and takes the creator into it
+- AC02: On session creation the browser navigates to a room URL that contains the room identifier so the link can be shared
+- AC03: A copy-link option is available inside the room so the creator can share the room with the team
+- AC04: When the callsign field is left empty a random Star Wars themed name is assigned to the creator
+- AC05: A callsign longer than the allowed length is rejected with an inline error and the session is not created
+- AC06: The user who creates the room becomes the host, appears in the participant list marked as host, and sees the card deck and host controls
+- AC07: When the connection to the backend cannot be established the creator remains on the landing screen and sees a clear themed error message
 
 *Out of Scope*
+- Joining an existing room, which is covered by a separate story
+- Voting, revealing, and resetting behaviour, which are covered by separate stories
 
 *Technical Notes*
+- Generate a room identifier on the frontend matching the backend slug pattern {code}^[a-z0-9]{4,32}(-[a-z0-9]{4,32})*${code}
+- Open the WebSocket connection to {code}wss://<host>/ws?room=<roomId>&name=<displayName>{code}; the first connection for a room identifier becomes host per the backend contract
+- Surface the room identifier in the URL so it can be shared; approach (query param, hash, or path) is a frontend decision
+- Provide a curated list of Star Wars themed callsigns to select from when the field is left empty
+- Apply the Death Star theme to the landing screen and error messaging per the UI design document
 
 *Testing Notes*
+- Add unit tests for room identifier generation and callsign fallback and length validation
+- Add an integration test for the create-and-land-as-host flow
+- Manually verify the copy-link affordance and the connection-failure error state
