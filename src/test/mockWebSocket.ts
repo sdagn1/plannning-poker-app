@@ -4,10 +4,17 @@ export type MockBehaviour = 'open' | 'fail';
 export class MockWebSocket {
   static instances: MockWebSocket[] = [];
   static behaviour: MockBehaviour = 'open';
+  /**
+   * When true (default), an opened socket auto-emits a `welcome` + `state`
+   * that makes the connecting user the sole host. Set false to drive the
+   * messages manually (e.g. joining a room with an existing host).
+   */
+  static autoWelcome = true;
 
   static reset() {
     MockWebSocket.instances = [];
     MockWebSocket.behaviour = 'open';
+    MockWebSocket.autoWelcome = true;
   }
 
   onopen: ((event: unknown) => void) | null = null;
@@ -29,6 +36,7 @@ export class MockWebSocket {
       }
       this.readyState = 1;
       this.onopen?.(new Event('open'));
+      if (!MockWebSocket.autoWelcome) return;
       const name =
         new URL(this.url).searchParams.get('name') ?? 'Unknown Pilot';
       const userId = 'user-host';

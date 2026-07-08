@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   generateRoomId,
   isValidRoomId,
+  parseJoinRoomId,
   ROOM_ID_PATTERN,
   ROOM_ID_MAX_LENGTH,
 } from '../lib/roomId.ts';
@@ -41,5 +42,22 @@ describe('isValidRoomId', () => {
     expect(isValidRoomId('room_1234')).toBe(false); // underscore
     expect(isValidRoomId('-abcd')).toBe(false); // leading dash
     expect(isValidRoomId('a'.repeat(ROOM_ID_MAX_LENGTH + 1))).toBe(false);
+  });
+});
+
+describe('parseJoinRoomId', () => {
+  it('returns the room id from a valid shared link', () => {
+    expect(parseJoinRoomId('xk29-4plm')).toBe('xk29-4plm');
+  });
+
+  it('returns null for a missing room id', () => {
+    expect(parseJoinRoomId(undefined)).toBeNull();
+    expect(parseJoinRoomId(null)).toBeNull();
+  });
+
+  it('returns null for a malformed room id', () => {
+    expect(parseJoinRoomId('AB12-cdef')).toBeNull(); // uppercase
+    expect(parseJoinRoomId('room_1234')).toBeNull(); // underscore
+    expect(parseJoinRoomId('abc')).toBeNull(); // segment too short
   });
 });

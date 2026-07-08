@@ -11,6 +11,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingScreen />} />
+        <Route path="/join/:roomId" element={<LandingScreen />} />
         <Route path="/room/:roomId" element={<RoomScreen />} />
       </Routes>
     </BrowserRouter>
