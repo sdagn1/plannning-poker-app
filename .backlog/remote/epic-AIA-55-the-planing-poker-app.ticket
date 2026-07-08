@@ -1,0 +1,38 @@
+---
+schemaVersion: 1
+templateName: epic
+issueType: epic
+title: The planing poker app
+lifecycleState: remote
+draft: true
+ticketKey: AIA-55
+component:
+labels: []
+lastSynced: 2026-07-08T11:56:22.070Z
+---
+
+*As the* Planning Poker Developer/Engineer
+*I want* to participate in a real-time planning poker session with my team to estimate story points on backlog items
+*So that* the team can reach a consensus estimate quickly and keep their backlog groomed
+
+*Background*
+This is a training and demo project to practise building a real-time collaborative web application. It provides a lightweight, browser-based planning poker tool that requires no accounts or installation. Sessions are ephemeral — no data is persisted once all participants disconnect. The goal is to give a team a simple, friction-free way to score tickets together during refinement sessions.
+
+*Materials*
+Product requirements document: docs/product-requirements.md
+Backend API contract: docs/planning-poker-api-contract.md
+UI design: docs/ui-design.md
+
+*Scope*
+- Create a session room and share a unique room URL with the team
+- Join a room using a display name, with no account required
+- Cast a vote using free-form point values (e.g. Fibonacci numbers, T-shirt sizes)
+- Reveal all votes simultaneously so every participant sees results at the same time
+- View a real-time participant list showing who has and has not yet voted
+
+*Out of Scope*
+- User accounts and authentication
+- Persistent session history or data storage beyond an active session
+
+*Dependencies*
+- None; this is a self-contained training project with no external team or system dependencies
