@@ -39,3 +39,12 @@ export function generateRoomId(): string {
 export function isValidRoomId(roomId: string): boolean {
   return roomId.length <= ROOM_ID_MAX_LENGTH && ROOM_ID_PATTERN.test(roomId);
 }
+
+/**
+ * Extract a room id from a shared link's route parameter. Returns the room id
+ * when it is present and valid, otherwise `null` (missing or malformed link).
+ */
+export function parseJoinRoomId(raw: string | null | undefined): string | null {
+  if (raw == null) return null;
+  return isValidRoomId(raw) ? raw : null;
+}

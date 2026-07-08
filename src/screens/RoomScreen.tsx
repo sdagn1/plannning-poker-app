@@ -19,10 +19,10 @@ export function RoomScreen() {
     };
   }, [roomId]);
 
-  // Joining an existing room is a separate story; if there is no active
-  // connection for this room, send the user back to the landing screen.
+  // If there is no active connection for this room, the visitor arrived via a
+  // shared link: send them to the join screen with the room id pre-populated.
   if (!roomId || connection.roomId !== roomId) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={roomId ? `/join/${roomId}` : '/'} replace />;
   }
 
   const { state, userId } = connection;
