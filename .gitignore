@@ -1,8 +1,21 @@
 .DS_Store
 
+# Node / Vite
+node_modules/
+dist/
+coverage/
+*.local
+.env
+.env.*
+!.env.example
+vite.config.ts.timestamp-*
+
 .backlog/breakdowns/*
 !.backlog/breakdowns/.gitkeep
 .backlog/local/*
 !.backlog/local/.gitkeep
 .backlog/_templates/.DS_Store
 .specstory/*
+
+# TS build info
+*.tsbuildinfo
