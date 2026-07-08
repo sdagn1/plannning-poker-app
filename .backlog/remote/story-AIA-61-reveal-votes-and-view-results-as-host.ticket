@@ -1,0 +1,23 @@
+---
+schemaVersion: 1.0
+issueType: Story
+templateName: story
+title: Reveal votes and view results as host
+draft: true
+lifecycleState: remote
+ticketKey: AIA-61
+component: 
+labels: []
+bucket: 
+epicKey: AIA-55
+---
+*As the* Planning Poker Developer/Engineer
+*I want* to reveal all votes simultaneously so every participant sees the results at the same time
+*So that* the team can discuss estimates and reach a consensus
+*Acceptance Criteria*
+
+*Out of Scope*
+
+*Technical Notes*
+
+*Testing Notes*

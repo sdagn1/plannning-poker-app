@@ -1,0 +1,23 @@
+---
+schemaVersion: 1.0
+issueType: Story
+templateName: story
+title: Vote on a story as a participant
+draft: true
+lifecycleState: remote
+ticketKey: AIA-60
+component: 
+labels: []
+bucket: 
+epicKey: AIA-55
+---
+*As the* Planning Poker Developer/Engineer
+*I want* to cast a point estimate vote during an active session and see which participants have voted
+*So that* the team can track readiness before votes are revealed
+*Acceptance Criteria*
+
+*Out of Scope*
+
+*Technical Notes*
+
+*Testing Notes*

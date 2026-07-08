@@ -1,0 +1,23 @@
+---
+schemaVersion: 1.0
+issueType: Story
+templateName: story
+title: Join an existing session room by URL
+draft: true
+lifecycleState: remote
+ticketKey: AIA-59
+component: 
+labels: []
+bucket: 
+epicKey: AIA-55
+---
+*As the* Planning Poker Developer/Engineer
+*I want* to join an existing session room by visiting its URL and entering a display name
+*So that* I can participate in the estimation session alongside my teammates
+*Acceptance Criteria*
+
+*Out of Scope*
+
+*Technical Notes*
+
+*Testing Notes*
