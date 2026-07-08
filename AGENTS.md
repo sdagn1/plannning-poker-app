@@ -7,6 +7,7 @@ Use the following documents:
 - [product requirements](./docs/product-requirements.md)
 - [architecture decisions](./docs/achitecture-decisions.md)
 - [backend contract](./docs/planning-poker-api-contract.md)
+- [ui design](./docs/ui-design.md)
 
 Be concise. Prioritise brevity over grammar.
 

@@ -1,0 +1,26 @@
+:root {
+  /* Background */
+  --bg-void: #050505;
+  --bg-surface: #111111;
+  --bg-elevated: #1c1c1c;
+
+  /* Borders */
+  --border-dim: #2e2e2e;
+  --border-active: #4a4a4a;
+
+  /* Text */
+  --text-primary: #d4d4d4;
+  --text-secondary: #6b6b6b;
+  --text-bright: #f0f0f0;
+
+  /* Imperial accents */
+  --imperial-red: #9b1c1c;
+  --imperial-red-hover: #c02626;
+  --targeting-green: #22c55e;
+  --targeting-green-glow: rgba(34, 197, 94, 0.25);
+  --laser-green: #4ade80;
+  --warning-amber: #b45309;
+
+  --font-display: 'Orbitron', ui-monospace, monospace;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
