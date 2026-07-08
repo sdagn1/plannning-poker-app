@@ -5,6 +5,7 @@ import { ParticipantList } from '../components/ParticipantList.tsx';
 import { CardDeck } from '../components/CardDeck.tsx';
 import { HostControls } from '../components/HostControls.tsx';
 import { CopyLinkButton } from '../components/CopyLinkButton.tsx';
+import { DeathStarIcon } from '../components/DeathStarIcon.tsx';
 
 export function RoomScreen() {
   const { roomId } = useParams<{ roomId: string }>();
@@ -32,7 +33,10 @@ export function RoomScreen() {
   return (
     <main className="room">
       <header className="room__bar">
-        <span className="room__brand">☽ DEATH STAR POKER</span>
+        <span className="room__brand">
+          <DeathStarIcon size={22} className="room__brand-icon" />
+          DEATH STAR POKER
+        </span>
         <span className="room__id">
           Room: <code>{roomId}</code>
         </span>

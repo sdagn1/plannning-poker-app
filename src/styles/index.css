@@ -205,10 +205,17 @@ code {
 }
 
 .room__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: 0.15em;
   color: var(--text-bright);
+}
+
+.room__brand-icon {
+  flex-shrink: 0;
 }
 
 .room__id {
@@ -332,6 +339,10 @@ code {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.5rem;
+}
+
+.card__icon {
+  flex-shrink: 0;
 }
 
 .card__flavour {

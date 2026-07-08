@@ -7,6 +7,8 @@ export interface Card {
   label: string;
   /** Optional flavour subtext. */
   flavour?: string;
+  /** When set, render the Death Star icon in place of the text label. */
+  icon?: 'deathstar';
 }
 
 export const DECK: Card[] = [
@@ -29,7 +31,8 @@ export const DECK: Card[] = [
   },
   {
     value: '∞',
-    label: '🌑',
+    label: '∞',
     flavour: 'Death Star',
+    icon: 'deathstar',
   },
 ];

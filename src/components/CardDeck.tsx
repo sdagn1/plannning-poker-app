@@ -1,4 +1,5 @@
 import { DECK } from '../lib/deck.ts';
+import { DeathStarIcon } from './DeathStarIcon.tsx';
 
 /**
  * The planning poker card tray. Voting behaviour is delivered by a separate
@@ -11,7 +12,11 @@ export function CardDeck() {
       <div className="deck__tray" role="list">
         {DECK.map((card) => (
           <div key={card.value} className="card" role="listitem">
-            <span className="card__label">{card.label}</span>
+            {card.icon === 'deathstar' ? (
+              <DeathStarIcon size={40} className="card__icon" />
+            ) : (
+              <span className="card__label">{card.label}</span>
+            )}
             {card.flavour && <span className="card__flavour">{card.flavour}</span>}
           </div>
         ))}

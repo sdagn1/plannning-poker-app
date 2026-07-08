@@ -8,23 +8,23 @@
 
 export const CALLSIGN_MAX_LENGTH = 32;
 
-/** Curated Star Wars themed callsigns, each <= CALLSIGN_MAX_LENGTH chars. */
+/** Curated Star Wars Empire callsigns, each <= CALLSIGN_MAX_LENGTH chars. */
 export const STAR_WARS_CALLSIGNS = [
-  'Red Leader',
-  'Gold Leader',
-  'Rogue One',
-  'Grey Squadron',
-  'Wedge Antilles',
-  'Biggs Darklighter',
-  'Porkins',
-  'Admiral Ackbar',
-  'General Dodonna',
-  'Wullf Yularen',
-  'Jek Porkins',
-  'Dutch Vander',
-  'Garven Dreis',
-  'Green Leader',
-  'Blue Squadron',
+  'Darth Vader',
+  'Emperor Palpatine',
+  'Boba Fett',
+  'Grand Moff Tarkin',
+  'Grand Admiral Thrawn',
+  'Director Krennic',
+  'Darth Maul',
+  'Count Dooku',
+  'Kylo Ren',
+  'Captain Phasma',
+  'General Hux',
+  'Admiral Piett',
+  'General Veers',
+  'Darth Sidious',
+  'The Grand Inquisitor',
 ] as const;
 
 export type CallsignValidationError = 'too_long';
